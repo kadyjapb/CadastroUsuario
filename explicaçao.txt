@@ -1,0 +1,56 @@
+# Explicação do Código JavaScript
+
+O código é responsável por gerenciar o cadastro de usuários em uma página HTML, capturando os dados do formulário e exibindo-os em uma tabela. Abaixo está a explicação linha por linha:
+
+### Código:
+```javascript
+const form = document.getElementById('registrationForm');
+```
+- **Descrição:** Seleciona o formulário HTML com o ID `registrationForm` e o armazena na constante `form`. Isso permite acessar o formulário diretamente no JavaScript.
+
+```javascript
+const userTable = document.getElementById('userTable').querySelector('tbody');
+```
+- **Descrição:** Seleciona a tabela HTML com o ID `userTable` e acessa o elemento `<tbody>`. Armazena essa referência na constante `userTable`, para que novas linhas possam ser adicionadas diretamente ao corpo da tabela.
+
+```javascript
+form.addEventListener('submit', function (event) {
+```
+- **Descrição:** Adiciona um ouvinte de evento (`event listener`) ao formulário para monitorar quando ele é enviado (quando o botão "Cadastrar" é clicado). O código dentro da função será executado sempre que o formulário for enviado.
+
+```javascript
+    event.preventDefault();
+```
+- **Descrição:** Impede o comportamento padrão do formulário ao ser enviado, que seria recarregar a página. Isso permite que o formulário seja processado sem uma atualização da página.
+
+```javascript
+    const name = document.getElementById('name').value;
+```
+- **Descrição:** Obtém o valor do campo de entrada de texto com o ID `name` e armazena na constante `name`. Este será o nome inserido pelo usuário.
+
+```javascript
+    const email = document.getElementById('email').value;
+```
+- **Descrição:** Obtém o valor do campo de entrada de texto com o ID `email` e armazena na constante `email`. Este será o e-mail inserido pelo usuário.
+
+```javascript
+    const newRow = document.createElement('tr');
+```
+- **Descrição:** Cria um novo elemento de linha (`<tr>`) para adicionar uma nova entrada na tabela. Essa linha será usada para exibir o nome e o e-mail do usuário.
+
+```javascript
+    newRow.innerHTML = `<td>${name}</td><td>${email}</td>`;
+```
+- **Descrição:** Define o conteúdo HTML da nova linha criada, inserindo duas células (`<td>`) com os valores de `name` e `email`. Isso mostra o nome e o e-mail do usuário em colunas separadas.
+
+```javascript
+    userTable.appendChild(newRow);
+```
+- **Descrição:** Adiciona a nova linha (`newRow`) ao corpo da tabela (`userTable`). Isso faz com que a linha recém-criada com o nome e o e-mail do usuário apareça na página.
+
+```javascript
+    form.reset();
+```
+- **Descrição:** Limpa todos os campos do formulário, redefinindo-os para o estado inicial. Isso permite que o formulário fique pronto para o próximo cadastro.
+
+---
